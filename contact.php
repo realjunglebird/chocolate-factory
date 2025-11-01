@@ -18,9 +18,8 @@
 <body>
     <?php include("./template/navbar.php"); ?>
 
-    <main style="display:flex; flex-direction: column; align-items: center">
+    <main style="display:flex; flex-direction: column; align-items: center; gap: 2rem;">
         <div class="form-container">
-            <h2>Вход на сайт:</h2>
             <fieldset>
                 <legend>Авторизация</legend>
                 <form>
@@ -36,7 +35,6 @@
         </div>
 
         <div class="form-container">
-            <h2>Заказать обратный звонок:</h2>
             <fieldset>
                 <legend>Обратный звонок</legend>
                 <form>
@@ -52,7 +50,6 @@
         </div>
 
         <div class="form-container">
-            <h2>Связаться с нами:</h2>
             <fieldset>
                 <legend>Связь с нами</legend>
                 <form>

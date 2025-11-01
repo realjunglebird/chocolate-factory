@@ -38,25 +38,6 @@
                         </a>
                     ";
                 }
-
-                /*
-                foreach ($images as $image) {
-                    $image_path = $dir . basename($image);
-                    $caption = $captions[$index];
-
-                    echo "
-                        <a class=\"gallery-image\">
-                            <img src=\"$image_path\">
-                            <div class=\"gallery-image-caption-container\">
-                                <div class=\"gallery-image-caption\">
-                                    <h1>$caption</h1>
-                                    <p>$caption</p>
-                                </div>
-                            </div>
-                        </a>
-                    ";
-                    $index++;
-                }*/
             ?>
         </div>
     </main>

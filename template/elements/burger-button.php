@@ -1,4 +1,4 @@
-<button class="burger-button" aria-expanded="false"></button>
+<button class="burger-button" aria-expanded="false">≡</button>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
         const burger = document.querySelector('.burger-button');
