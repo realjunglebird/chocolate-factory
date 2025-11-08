@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid с анимацией</title>
+    <title>Шоколадная фабрика | Grid с анимацией</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css"/>
     <style>
         html[data-theme="dark"] {
@@ -37,10 +39,21 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            background: transparent;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+            z-index: -1;
         }
 
         .header-container {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             max-width: 1200px;
@@ -147,10 +160,11 @@
 
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 96px;
                 right: -100%;
                 flex-direction: column;
                 background-color: var(--bg-primary);
+                backdrop-filter: blur(15px);
                 width: 100%;
                 text-align: center;
                 padding: 30px 0;
@@ -158,6 +172,7 @@
                 transition: all 0.5s ease;
                 border-top: 2px solid var(--accent-color);
                 box-shadow: var(--shadow);
+                z-index: 999;
             }
 
             .nav-menu.active {
@@ -182,6 +197,7 @@
             border-top: 3px solid var(--accent-color);
             box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
             margin-top: auto;
+            backdrop-filter: blur(10px);
         }
 
         .footer-container {
@@ -272,6 +288,7 @@
 
         .social-links {
             display: flex;
+            justify-content: center;
             gap: 15px;
             margin-top: 15px;
         }
@@ -409,13 +426,13 @@
 </header>
 
 <div class="grid-container">
-    <div class="grid-item">1</div>
-    <div class="grid-item">2</div>
-    <div class="grid-item">3</div>
-    <div class="grid-item">4</div>
-    <div class="grid-item">5</div>
-    <div class="grid-item">6</div>
-    <div class="grid-item">7</div>
+    <div class="grid-item">🍫</div>
+    <div class="grid-item">🍭</div>
+    <div class="grid-item">🍬</div>
+    <div class="grid-item">☕</div>
+    <div class="grid-item">🎂</div>
+    <div class="grid-item">🍰</div>
+    <div class="grid-item">🍥</div>
 </div>
 
 
@@ -440,7 +457,7 @@
         <div class="footer-section">
             <h3>Контакты</h3>
             <ul>
-                <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Примерная, 123</li>
+                <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Шоколадная, 123</li>
                 <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
                 <li><i class="fas fa-envelope"></i> info@example.com</li>
             </ul>
@@ -467,10 +484,32 @@
     </div>
 
     <div class="copyright">
-        <p>&copy; 2023 Все права защищены. Разработано с использованием Grid Layout и CSS-анимаций.</p>
+        <p>&copy; 2025 Шоколадная фабрика. Все права защищены.</p>
     </div>
 </footer>
 
     <?php include('template/elements/theme-toggle.php');?>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Закрытие меню при клике на ссылку
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                burger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    });
+</script>
 </body>
 </html>

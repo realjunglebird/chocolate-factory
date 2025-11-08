@@ -27,8 +27,6 @@ $button_hover: brown;
     box-shadow: none;
     width: 50px;
     height: 50px;
-    color: white;
-    color: #7f8c8d;
     color: var(--text-color);
     cursor: pointer;
     display: flex;
@@ -43,14 +41,27 @@ $button_hover: brown;
     }
 }
 
+// =============================================================================
+// Themes
+// =============================================================================
+html {
+    --c1: #e0be9b;          // Фон
+    --c2: #f1d4af;          // Фон
+    --text-color: #401010;  // Цвет текста
+}
 
+html[data-theme="dark"] {
+    --c1: #151515;          // Фон
+    --c2: #1a1a1a;          // Фон
+    --text-color: #ffffff;  // Цвет текста
+}
+
+// =============================================================================
+// Styles
+// =============================================================================
 html {
     font-family: "Montserrat", sans-serif;
-    --text-color: #401010; // Цвет текста
     --s: 69px; /* control the size*/
-    --c1: #e0be9b;
-    --c2: #f1d4af;
-
     --_g:var(--c1) 17.67%,#0000 0 82.33%,var(--c1) 0;
     background:
             linear-gradient( 45deg,var(--_g)),
@@ -59,12 +70,6 @@ html {
             calc(var(--s)/4) calc(var(--s)/4);
     background-size: var(--s) var(--s);
     background-attachment: fixed;
-
-    &[data-theme="dark"] {
-        --c1: #151515;          // Фон
-        --c2: #1a1a1a;          // Фон
-        --text-color: #ffffff;  // Цвет текста
-    }
 }
 
 body {
@@ -72,6 +77,7 @@ body {
     display: flex;
     flex-direction: column;
     color: var(--text-color);
+    overflow-x: hidden;
 }
 
 main {
@@ -91,10 +97,6 @@ main {
 .navbar-logo {
     text-align: center;
     z-index: 1001;
-}
-
-a:link {
-    color: brown;
 }
 
 .navbar {
@@ -210,18 +212,13 @@ input[type=tel],
 select,
 textarea {
     box-sizing: border-box;
-    padding: 0.5rem;
-
-    border: 2px solid #401010;
-    color: #401010;
-    background: transparent;
-    font-family: "Montserrat", sans-serif;
-    outline: none;
-
     padding: 1rem;
+    outline: none;
     border: none;
     border-radius: 2rem;
+    color: #401010;
     background-color: rgba(255, 255, 255, 0.4);
+    font-family: "Montserrat", sans-serif;
 
     &:focus {
         border-color: brown;
@@ -264,13 +261,9 @@ img {
 
 #theme-toggle {
     margin: 0;
-
     appearance: none;
     -webkit-appearance: none;
     @include round-button;
-
-
-
     position: fixed;
     bottom: 6rem;
     left: 2rem;
@@ -284,9 +277,6 @@ img {
         content: "☀️";
     }
 }
-
-
-
 
 fieldset {
     @include glass-effect;
@@ -307,17 +297,6 @@ legend {
     font-weight: bold;
 }
 
-//.form-container {
-//    max-width: 30%;
-//
-//    form {
-//        width: 100%;
-//    }
-//}
-
-
-
-
 // =============================================================================
 // Notification System
 // =============================================================================
@@ -333,48 +312,6 @@ legend {
         @include round-button;
     }
 }
-
-
-//.notification-container {
-//    position: relative;
-//}
-
-//#notification-button {
-//    position: fixed;
-//    left: 2rem;
-//    bottom: 2rem;
-//    width: 50px;
-//    height: 50px;
-//    border-radius: 50%;
-//    background: #3498db;
-//    border: none;
-//    color: black;
-//    cursor: pointer;
-//    display: flex;
-//    justify-content: center;
-//    align-items: center;
-//    font-size: 20px;
-//    transition: all 0.3s ease;
-//
-//    background: rgba(255, 255, 255, 0.05);
-//    backdrop-filter: blur(4px);
-//    box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.3), inset -2px -2px 2px 1px rgba(255, 255, 255, 0.3), 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-//    color: rgba(255, 255, 255, 0.8);
-//    border: 1px solid rgba(255, 255, 255, 0.18);
-//
-//    &:hover {
-//        background: $button_hover;
-//        background: rgba(165, 42, 42, 0.5);
-//        color: white;
-//    }
-//}
-/*
-#notification-button:hover {
-    background: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-*/
 
 .notification-badge {
     position: absolute;
@@ -607,4 +544,3 @@ legend {
         font-size: 15px;
     }
 }
-
