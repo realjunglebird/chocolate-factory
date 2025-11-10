@@ -11,6 +11,7 @@
 ?>
 />
 
+
 <script type="text/javascript">
     // Функция для получения значения куки по имени
     function getCookie(name) {

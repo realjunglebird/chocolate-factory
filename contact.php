@@ -5,6 +5,7 @@
     <title>Шоколадная фабрика | Связаться с нами</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <style>
         form {
@@ -12,28 +13,105 @@
             flex-direction: column;
             width: 30%;
         }
+    </style>
 
+    <style>
+        .form-container {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-fieldset {
+            width: 90%;
+            border: none;
+            padding: 0;
+        }
+
+        .form-legend {
+            font-size: 2.2em;
+            font-weight: 700;
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .form-input {
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            background: white;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-form {
+                grid-template-columns: 1fr 1fr;
+                gap: 25px;
+            }
+
+            .form-group:nth-child(3),
+            .form-group:nth-child(4) {
+                grid-column: 1 / -1;
+            }
+        }
     </style>
 </head>
 <body>
-    <?php include("./template/navbar.php"); ?>
+    <?php include("./template/header.php"); ?>
 
-    <main style="display:flex; flex-direction: column; align-items: center; gap: 2rem;">
-        <div class="form-container">
-            <fieldset>
-                <legend>Авторизация</legend>
-                <form>
-                    <label for="login">Логин:</label>
-                    <input id="login" type="email" placeholder="Введите ваш логин...">
-
-                    <label for="password">Пароль:</label>
-                    <input id="password" type="password" placeholder="Введите ваш пароль...">
-
-                    <button style="margin-top: 15px" type="submit">Войти</button>
-                </form>
-            </fieldset>
-        </div>
-
+    <main style="margin-top: 3rem; margin-bottom: 3rem; display:flex; flex-direction: column; align-items: center; gap: 2rem;">
         <div class="form-container">
             <fieldset>
                 <legend>Обратный звонок</legend>
@@ -50,25 +128,33 @@
         </div>
 
         <div class="form-container">
-            <fieldset>
-                <legend>Связь с нами</legend>
-                <form>
-                    <label for="sender-email">Ваш email:</label>
-                    <input id="sender-email" type="email" placeholder="Введите ваш email...">
+            <fieldset class="form-fieldset">
+                <legend class="form-legend">Связь с нами</legend>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="sender-email">Ваш email</label>
+                        <input id="sender-email" type="email" class="form-input" placeholder="Введите ваш email..." required>
+                    </div>
 
-                    <label for="theme">Тема вашего сообщения:</label>
-                    <input id="theme" type="text" placeholder="Введите тему сообщения...">
+                    <div class="form-group">
+                        <label for="theme">Тема сообщения</label>
+                        <input id="theme" type="text" class="form-input" placeholder="Введите тему сообщения..." required>
+                    </div>
 
-                    <label for="message">Ваше сообщение:</label>
-                    <textarea id="message" rows="10" placeholder="Введите ваше сообщение..."></textarea>
+                    <div class="form-group">
+                        <label for="message">Ваше сообщение</label>
+                        <textarea id="message" class="form-input" rows="6" placeholder="Введите ваше сообщение..." required></textarea>
+                    </div>
 
-                    <button style="margin-top: 15px" type="submit">Отправить</button>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Отправить сообщение</button>
+                    </div>
                 </form>
             </fieldset>
         </div>
 
 
-        <div style="display: flex; flex-direction: row; gap: 50px">
+        <div style="display: flex; flex-direction: row; gap: 50px; flex-wrap: wrap; justify-content: center">
             <div>
                 <h2>Где нас найти?</h2>
                 <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7531be3bd60c417eccb9e41af41e85ce653ae995b56ee52950e9c562ca52447c&amp;source=constructor" width="500" height="400" frameborder="0"></iframe>
@@ -81,9 +167,10 @@
         </div>
     </main>
 
-    <?php include("./template/footer.php"); ?>
+    <?php include("./template/footer-new.php"); ?>
 
     <?php include("./template/elements/scroll-to-top-button.php"); ?>
-    <?php include("./template/elements/burger-button.php"); ?>
+    <?php include("./template/elements/theme-toggle.php"); ?>
+    <?php include("./template/elements/notifications-button.php"); ?>
 </body>
 </html>

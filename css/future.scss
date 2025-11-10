@@ -1,4 +1,4 @@
-@import "main";
+//@use "main";
 
 .future-card-container {
     display: flex;
@@ -31,14 +31,14 @@
 .future-neon-rect::after {
     content: "";
     position: absolute;
-    top: 5px; /* Adjust for shadow offset */
-    left: 5px; /* Adjust for shadow offset */
-    right: -5px; /* Extend shadow slightly */
-    bottom: -5px; /* Extend shadow slightly */
+    top: 5px;
+    left: 5px;
+    right: -5px;
+    bottom: -5px;
     background: linear-gradient(to bottom right, rgb(255, 10, 82), rgb(255, 175, 10));
-    filter: blur(10px); /* Apply blur for a softer shadow */
-    z-index: 0; /* Place behind the main content */
-    border-radius: 1rem; /* Match parent's border-radius if desired */
+    filter: blur(10px);
+    z-index: 0;
+    border-radius: 1rem;
 }
 
 #future-neon-rect-1 {
@@ -243,15 +243,15 @@
 }
 
 .youtube::after {
-    background: linear-gradient(red, darkred);
+    background: linear-gradient(#ff0033, #ff0037);
 }
 
 .vk::after {
-    background: linear-gradient(blue, darkblue);
+    background: linear-gradient(#0077ff, #0080ff);
 }
 
 .telegram::after {
-    background: linear-gradient(cyan, aqua);
+    background: linear-gradient(#24A1DE, #24A1DF);
 }
 
 .future-social-caption {
@@ -271,11 +271,11 @@ html {
     --accent-color-3: #45b7d1;
 
     &[data-theme="light"] {
-        --primary-color: #b1b1b1;
+        --primary-color: #eaeaea;
     }
 
     &[data-theme="dark"] {
-        --primary-color: #1a1a2e;
+        --primary-color: #202020;
     }
 }
 

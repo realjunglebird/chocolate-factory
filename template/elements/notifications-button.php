@@ -1,7 +1,7 @@
 <div class="notification-container">
     <button id="notification-button" class="notification-button" type="button">
-        <a class="bell-icon">🔔</a>
-        <a class="close-icon" style="display: none">✕</a>
+        <i class="fa-solid fa-bell bell-icon"></i>
+        <i class="fa-solid fa-xmark close-icon" style="display: none"></i>
         <span class="notification-badge">3</span>
     </button>
 
