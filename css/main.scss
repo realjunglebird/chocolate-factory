@@ -1,3 +1,4 @@
+@use "_root";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 // =============================================================================
@@ -6,40 +7,7 @@
 $border_unhovered: #401010;
 $button_hover: brown;
 
-// =============================================================================
-// Mixins
-// =============================================================================
-@mixin glass-effect {
-    background: rgba(255, 255, 255, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 2rem;
-    backdrop-filter: blur(10px);
-    box-shadow:
-            inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),       // top-left
-            inset -2px -2px 2px 1px rgba(255, 255, 255, 0.2),   // bottom-right
-            0 4px 8px 0 rgba(0, 0, 0, 0.05),                    // outer dark
-            0 6px 20px 0 rgba(255, 255, 255, 0.2);              // outer light
-}
 
-@mixin round-button {
-    @include glass-effect;
-    border-radius: 50%;
-    box-shadow: none;
-    width: 50px;
-    height: 50px;
-    color: var(--text-color);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-
-    transition: all 0.2s ease;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.4);
-    }
-}
 
 // =============================================================================
 // Themes
@@ -176,7 +144,7 @@ main {
 }
 
 .burger-button {
-    @include round-button;
+    @include root.round-button;
     display: none;
     width: 3rem;
     height: 3rem;
@@ -231,6 +199,7 @@ input[type=email],
 input[type=password],
 input[type=datetime-local],
 input[type=tel],
+input[type=number],
 select,
 textarea {
     box-sizing: border-box;
@@ -238,7 +207,7 @@ textarea {
     outline: none;
     border: none;
     border-radius: 2rem;
-    color: #401010;
+    color: var(--text-color);
     background-color: rgba(255, 255, 255, 0.4);
     font-family: "Montserrat", sans-serif;
 
@@ -273,7 +242,7 @@ img {
 }
 
 #scroll-to-top-button {
-    @include round-button;
+    @include root.round-button;
     display: none;
     position: fixed;
     bottom: 2rem;
@@ -281,27 +250,63 @@ img {
     z-index: 99;
 }
 
-#theme-toggle {
+#theme-toggle-container {
+    width: 50px;
+    height: 50px;
     margin: 0;
-    appearance: none;
-    -webkit-appearance: none;
-    @include round-button;
     position: fixed;
     bottom: 6rem;
     left: 2rem;
     z-index: 99;
 
-    &::before {
-        content: "🌙";
+    #theme-toggle-icons {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 99;
+
+        pointer-events: none;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
     }
 
-    &:checked::before {
-        content: "☀️";
+    #theme-toggle {
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        @include root.round-button;
+        //position: fixed;
+        //bottom: 6rem;
+        //left: 2rem;
+        //z-index: 99;
+        position: absolute;
+        //
+        //&::before {
+        //    content: "🌙";
+        //}
+        //
+        //&:checked::before {
+        //    content: "☀️";
+        //}
     }
 }
 
+
+#basket-button {
+    @include root.round-button;
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    z-index: 99;
+}
+
 .form-container {
-    @include glass-effect;
+    @include root.glass-effect;
     border: none;
     border-radius: 2rem;
     padding: 2rem;
@@ -339,7 +344,8 @@ legend {
         position: fixed;
         left: 2rem;
         bottom: 2rem;
-        @include round-button;
+        @include root.round-button;
+        z-index: 99;
     }
 }
 
@@ -564,7 +570,7 @@ legend {
     backdrop-filter: blur(20px);
     transition: 0.2s ease;
 
-    @include glass-effect;
+    @include root.glass-effect;
 
     h1 {
         font-size: 20px;

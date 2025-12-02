@@ -110,7 +110,7 @@
     </main>
 
 
-    <?php include("./template/footer-new.php"); ?>
+    <?php include("./template/footer.php"); ?>
 
     <?php include("./template/elements/notifications-button.php"); ?>
     <?php include("./template/elements/burger-button.php"); ?>

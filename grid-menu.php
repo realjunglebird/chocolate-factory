@@ -60,7 +60,7 @@
         <div class="grid-item">🍥</div>
     </div>
 
-    <?php include('template/footer-new.php'); ?>
+    <?php include('template/footer.php'); ?>
 
     <?php include('template/elements/theme-toggle.php'); ?>
     <?php include('template/elements/notifications-button.php'); ?>

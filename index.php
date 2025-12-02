@@ -100,7 +100,7 @@
         </dl>
     </main>
 
-    <?php include("./template/footer.php"); ?>
+    <?php include("./template/footer-old.php"); ?>
 
     <?php include("./template/elements/scroll-to-top-button.php"); ?>
     <?php include("./template/elements/burger-button.php"); ?>

@@ -68,7 +68,7 @@
 
     <?php include('template/elements/theme-toggle.php'); ?>
 
-    <?php include('template/footer-new.php'); ?>
+    <?php include('template/footer.php'); ?>
 </body>
 
 </html>

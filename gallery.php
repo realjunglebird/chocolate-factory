@@ -42,7 +42,7 @@
         </div>
     </main>
 
-    <?php include("./template/footer.php"); ?>
+    <?php include("./template/footer-old.php"); ?>
     <?php include("./template/elements/notifications-button.php"); ?>
     <?php include("./template/elements/burger-button.php"); ?>
     <?php include("./template/elements/scroll-to-top-button.php"); ?>

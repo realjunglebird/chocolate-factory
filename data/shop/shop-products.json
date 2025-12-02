@@ -1,0 +1,37 @@
+{
+  "1": {
+    "name": "Набор «Азбука шоколатье»",
+    "thumb": "data/shop/thumbs/chocolatier-abc.png",
+    "price": 1200
+  },
+  "2": {
+    "name": "Дегустационный бокс «География вкуса»",
+    "thumb": "data/shop/thumbs/tasting-box.png",
+    "price": 950
+  },
+  "3": {
+    "name": "Пробник какао-бобов «Из сердца стручка»",
+    "thumb": "data/shop/thumbs/cocoa-sampler.png",
+    "price": 350
+  },
+  "4": {
+    "name": "Набор для творчества «Шоколадный алхимик»",
+    "thumb": "data/shop/thumbs/chocolate-alchemist.png",
+    "price": 1800
+  },
+  "5": {
+    "name": "Книга-путеводитель «От боба до плитки»",
+    "thumb": "data/shop/thumbs/from-bean-to-tile.png",
+    "price": 690
+  },
+  "6": {
+    "name": "Плакат «Технологическая карта шоколада»",
+    "thumb": "data/shop/thumbs/flow-chart.png",
+    "price": 500
+  },
+  "7": {
+    "name": "Сувенирный набор «Инструменты дегустатора»",
+    "thumb": "data/shop/thumbs/tasters-tools.png",
+    "price": 550
+  }
+}

@@ -167,7 +167,7 @@
         </div>
     </main>
 
-    <?php include("./template/footer-new.php"); ?>
+    <?php include("./template/footer.php"); ?>
 
     <?php include("./template/elements/scroll-to-top-button.php"); ?>
     <?php include("./template/elements/theme-toggle.php"); ?>
