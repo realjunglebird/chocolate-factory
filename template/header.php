@@ -1,13 +1,13 @@
 <header class="header">
     <div class="header-container">
-        <a href="#" class="logo">
+        <a href="index.php" class="logo">
             <span class="logo-text">Шоколадная<span class="logo-highlight">Фабрика</span></span>
         </a>
 
         <nav>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Главная</a>
+                    <a href="index.php" class="nav-link">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">О нас</a>
@@ -16,10 +16,10 @@
                     <a href="#" class="nav-link">Услуги</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Продукция</a>
+                    <a href="shop.php" class="nav-link">Продукция</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Контакты</a>
+                    <a href="contact.php" class="nav-link">Контакты</a>
                 </li>
             </ul>
         </nav>

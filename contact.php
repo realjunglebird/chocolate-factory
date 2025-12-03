@@ -37,7 +37,6 @@
             font-size: 2.2em;
             font-weight: 700;
             text-align: center;
-            color: #333;
             margin-bottom: 30px;
             position: relative;
             padding-bottom: 15px;
@@ -55,12 +54,6 @@
             flex-direction: column;
         }
 
-        label {
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #555;
-            transition: color 0.3s ease;
-        }
 
         .form-input {
             padding: 15px 20px;
@@ -71,7 +64,6 @@
 
         .form-input:focus {
             outline: none;
-            background: white;
             transform: scale(1.02);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
         }
@@ -79,20 +71,6 @@
         textarea.form-input {
             resize: vertical;
             min-height: 120px;
-        }
-
-        .submit-btn {
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
         }
 
         @media (min-width: 768px) {
