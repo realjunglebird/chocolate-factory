@@ -3,7 +3,7 @@
         <i id="sun-icon" class="fa-solid fa-sun"></i>
         <i id="moon-icon" class="fa-solid fa-moon" style="display: none"></i>
     </div>
-    <input type="checkbox" id="theme-toggle" <?php
+    <input type="checkbox" id="theme-toggle" class="glass-effect-new round-button" <?php
 
         if (isset($_COOKIE["theme"]))
         {

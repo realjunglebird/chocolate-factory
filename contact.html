@@ -13,9 +13,7 @@
             flex-direction: column;
             width: 30%;
         }
-    </style>
 
-    <style>
         .form-container {
             box-sizing: border-box;
             display: flex;
@@ -87,7 +85,7 @@
     </style>
 </head>
 <body>
-    <?php include("./template/header.php"); ?>
+    <div id="header-placeholder"></div>
 
     <main style="margin-top: 3rem; margin-bottom: 3rem; display:flex; flex-direction: column; align-items: center; gap: 2rem;">
         <div class="form-container">
@@ -145,10 +143,12 @@
         </div>
     </main>
 
-    <?php include("./template/footer.php"); ?>
+    <div id="footer-placeholder"></div>
 
-    <?php include("./template/elements/scroll-to-top-button.php"); ?>
-    <?php include("./template/elements/theme-toggle.php"); ?>
-    <?php include("./template/elements/notifications-button.php"); ?>
+    <div id="theme-toggle-placeholder"></div>
+    <div id="scroll-to-top-button-placeholder"></div>
+    <div id="notifications-button-placeholder"></div>
+
+<script src="./script/initialize-page.js"></script>
 </body>
 </html>

@@ -1,8 +1,6 @@
-<button class="glass-effect-new round-button" id="scroll-to-top-button" type="button">
-    &#8593;
-</button>
-<script type="text/javascript">
-    let button = document.getElementById('scroll-to-top-button');
+//document.addEventListener('DOMContentLoaded', () => {
+
+    const button = document.getElementById('scroll-to-top-button');
 
     window.onscroll = function() {
         if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -12,8 +10,9 @@
         }
     }
 
-    button.onclick = function() {
+    button.addEventListener('click', () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-    }
-</script>
+    });
+
+//});

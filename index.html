@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico"/>
     <link rel="stylesheet" href="style/main.css">
-    <link rel="stylesheet" href="css/main.css">
+<!--    <link rel="stylesheet" href="css/main.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         main {
-            display: flex;
-            flex-direction: column;
             gap: 1rem;
         }
 
@@ -31,9 +29,9 @@
     </style>
 </head>
 <body>
-    <?php include("./template/header.php"); ?>
+    <div id="header-placeholder"></div>
 
-    <main style="margin-top: 3rem; margin-bottom: 3rem;">
+    <main>
 
         <section class="text-section">
             <h2>Наша история</h2>
@@ -64,10 +62,14 @@
         </section>
     </main>
 
-    <?php include("./template/footer.php"); ?>
+    <div id="footer-placeholder"></div>
 
-    <?php include 'template/elements/theme-toggle.php' ?>
-    <?php include 'template/elements/scroll-to-top-button.php' ?>
-    <?php include 'template/elements/notifications-button.php' ?>
+    <div id="theme-toggle-placeholder"></div>
+    <div id="scroll-to-top-button-placeholder"></div>
+    <div id="notifications-button-placeholder"></div>
+
+<script src="./script/initialize-page.js"></script>
+
 </body>
+
 </html>

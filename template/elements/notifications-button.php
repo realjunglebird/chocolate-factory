@@ -1,5 +1,5 @@
 <div class="notification-container">
-    <button id="notification-button" class="notification-button" type="button">
+    <button id="notification-button" class="notification-button glass-effect-new round-button" type="button">
         <i class="fa-solid fa-bell bell-icon"></i>
         <i class="fa-solid fa-xmark close-icon" style="display: none"></i>
         <span class="notification-badge">3</span>

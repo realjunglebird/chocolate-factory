@@ -1,41 +1,96 @@
-/* Светлая тема */
-html {
-    --c1: #e0be9b;              /* Фон */
-    --c2: #f1d4af;              /* Фон */
-    --text-color: #401010;      /* Цвет текста */
-    --bg-primary: #ffffff3b;
-    --bg-secondary: #f5f5f5;
-    --text-primary: #262626;
-    --text-secondary: #000;
-    --accent-color: #e6a217;
-    --border-color: #e0e0e0;
-    --shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    --glass-background: rgba(255, 255, 255, 0.3);
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "themes.css";
+@import "footer.css";
+@import "header.css";
+@import "notifications.css";
+
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow:
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.2),       /*/ top-left*/
+    inset -2px -2px 2px 1px rgba(255, 255, 255, 0.2),   /*/ bottom-right*/
+    0 4px 8px 0 rgba(0, 0, 0, 0.05),                    /*/ outer dark*/
+    0 6px 20px 0 rgba(255, 255, 255, 0.2);              /*/ outer light*/
 }
 
-/* Темная тема */
-html[data-theme="dark"] {
-    --c1: #151515;              /* Фон */
-    --c2: #1a1a1a;              /* Фон */
-    --text-color: #ffffff;      /* Цвет текста */
-    --bg-primary: #1a1a1a50;
-    --bg-secondary: #2d2d2d;
-    --text-primary: #ffffff;
-    --text-secondary: #cccccc;
-    --accent-color: #fdbb2d;
-    --border-color: #444444;
-    --shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    --glass-background: rgba(255, 255, 255, 0.1);
+.glass-effect-new {
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    z-index: 10;
+    color: var(--text-color);
 }
 
+.round-button {
+    border-radius: 50%;
+    box-shadow: none;
+    width: 50px;
+    height: 50px;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
 
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+}
+
+/********************************************************************/
+/*                              СТИЛИ                               */
+/********************************************************************/
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Шрифт + фон */
+html {
+    font-family: "Montserrat", sans-serif;
+    --s: 69px; /* control the size*/
+    --_g:var(--c1) 17.67%,#0000 0 82.33%,var(--c1) 0;
+    background:
+            linear-gradient( 45deg,var(--_g)),
+            linear-gradient(-45deg,var(--_g)),
+            conic-gradient(var(--c2) 75%,var(--c1) 0)
+            calc(var(--s)/4) calc(var(--s)/4);
+    background-size: var(--s) var(--s);
+    background-attachment: fixed;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+main {
+    margin: 3rem 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: 767px) {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 .text-section {
     background-color: var(--glass-background);
@@ -47,4 +102,138 @@ html[data-theme="dark"] {
 
 .text-section h2 {
     margin-bottom: 1rem;
+}
+
+/* Элементы пользовательского интерфейса */
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+select,
+textarea {
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.4);
+    font-family: "Montserrat", sans-serif;
+
+    &:focus {
+        border-color: brown;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+button[type=submit] {
+    border: 2px solid var(--text-primary);
+    color: var(--text-primary);
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+
+    padding: 18px 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+
+    &:hover {
+        background: var(--accent-color);
+    }
+}
+
+#scroll-to-top-button {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 99;
+}
+
+#theme-toggle-container {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    position: fixed;
+    bottom: 6rem;
+    left: 2rem;
+    z-index: 99;
+
+    #theme-toggle-icons {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 99;
+
+        pointer-events: none;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    #theme-toggle {
+        margin: 0;
+        appearance: none;
+        -webkit-appearance: none;
+        @include root.round-button;
+        position: absolute;
+    }
+}
+
+
+#basket-button {
+    @include root.round-button;
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    z-index: 99;
+}
+
+.form-container {
+    @include root.glass-effect-new;
+    background-color: var(--glass-background);
+    border-radius: 2rem;
+    padding: 2rem;
+    padding-top: 1rem;
+}
+
+fieldset {
+/* //@include glass-effect; */
+    border: none;
+    border-radius: 2rem;
+    padding: 2rem;
+    padding-top: 1rem;
+
+    form {
+        margin-top: 1rem;
+        width: 100%
+    }
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+
+legend {
+    display: contents;
+    font-size: larger;
+    font-weight: bold;
 }
