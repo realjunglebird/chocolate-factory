@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Интересные факты о шоколаде | Шоколадная фабрика</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="style/main.css">
+        <style>
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 500px;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .carousel-btn-prev {
+            left: 20px;
+        }
+        
+        .carousel-btn-next {
+            right: 20px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .carousel-indicator.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+            display: none;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .carousel-container {
+                border-radius: 0;
+            }
+            
+            .carousel-slides {
+                height: 400px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-slides {
+                height: 300px;
+            }
+            
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+            
+            .carousel-btn-prev {
+                left: 10px;
+            }
+            
+            .carousel-btn-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <h1>Интересные факты о шоколаде</h1>
+
+        <div class="carousel-container">
+            <div class="carousel-slides">
+            </div>
+            
+            <button class="carousel-btn carousel-btn-prev">&#10094;</button>
+            <button class="carousel-btn carousel-btn-next">&#10095;</button>
+            
+            <div class="carousel-indicators">
+            </div>
+            
+            <div class="carousel-caption">
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="theme-toggle-placeholder"></div>
+    <div id="scroll-to-top-button-placeholder"></div>
+    <div id="notifications-button-placeholder"></div>
+
+    <script src="./script/initialize-page.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const response = await fetch('data/facts.json');
+            const json = await response.json();
+
+            Object.keys(json).forEach(key => {
+                let fact = json[key];
+
+                let factCard = document.createElement('section');
+                factCard.classList.add('text-section');
+                factCard.innerHTML = `
+                    <h2>Факт №${key}: ${fact.title}</h2>
+                    <p>${fact.text}</p>
+                `;
+
+                document.querySelector('main').appendChild(factCard);
+            });
+        });
+    </script>
+
+    <script>
+        // Данные карусели
+        const carouselData = [
+            {
+                imageUrl: 'media/images/cacao-beans.jpg',
+                caption: 'Какао-бобы'
+            },
+            {
+                imageUrl: 'media/images/facts-2.jpg',
+                caption: 'Испанский мореплаватель'
+            },
+            {
+                imageUrl: 'media/images/facts-1.jpg',
+                caption: 'Какао у индейцев'
+            },
+            {
+                imageUrl: 'media/images/facts-3.jpg',
+                caption: 'Военный паёк'
+            },
+            {
+                imageUrl: 'media/images/facts-4.jpg',
+                caption: 'Белый шоколад'
+            }
+        ];
+
+        // Инициализация карусели
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselSlides = document.querySelector('.carousel-slides');
+            const carouselIndicators = document.querySelector('.carousel-indicators');
+            const carouselCaption = document.querySelector('.carousel-caption');
+            const prevBtn = document.querySelector('.carousel-btn-prev');
+            const nextBtn = document.querySelector('.carousel-btn-next');
+            
+            let currentSlide = 0;
+            
+            // Создание слайдов
+            carouselData.forEach((item, index) => {
+                // Создание слайда
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.dataset.index = index;
+                
+                const img = document.createElement('img');
+                img.src = item.imageUrl;
+                img.alt = `Изображение ${index + 1}`;
+                
+                slide.appendChild(img);
+                carouselSlides.appendChild(slide);
+                
+                // Создание индикатора
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.dataset.index = index;
+                indicator.addEventListener('click', () => goToSlide(index));
+                carouselIndicators.appendChild(indicator);
+            });
+            
+            // Установка начальной подписи
+            carouselCaption.textContent = carouselData[0].caption;
+            
+            // Функция перехода к определенному слайду
+            function goToSlide(index) {
+                // Корректировка индекса для циклической навигации
+                if (index >= carouselData.length) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = carouselData.length - 1;
+                } else {
+                    currentSlide = index;
+                }
+                
+                // Обновление позиции слайдов
+                carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Обновление активного индикатора
+                document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
+                    if (i === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+                
+                // Обновление подписи
+                carouselCaption.textContent = carouselData[currentSlide].caption;
+            }
+            
+            // Обработчики кнопок навигации
+            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+            
+            // Автоматическое перелистывание (по желанию)
+            let autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+            
+            // Остановка автопрокрутки при наведении
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+            });
+            
+            // Поддержка клавиатурной навигации
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    goToSlide(currentSlide - 1);
+                } else if (e.key === 'ArrowRight') {
+                    goToSlide(currentSlide + 1);
+                }
+            });
+            
+            // Адаптация к изменению размера окна
+            window.addEventListener('resize', () => {
+                // Принудительное обновление позиции при изменении размера окна
+                carouselSlides.style.transition = 'none';
+                carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Восстановление анимации после небольшой задержки
+                setTimeout(() => {
+                    carouselSlides.style.transition = 'transform 0.5s ease';
+                }, 10);
+            });
+        });
+    </script>
+</body>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разворачивающиеся текстовые блоки</title>
+    <style>
+        /* Стили для аккордеона */
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #fff;
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .accordion-header {
+            padding: 18px 20px;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+            user-select: none;
+        }
+        
+        .accordion-header:hover {
+            background-color: #e9ecef;
+        }
+        
+        .accordion-item.active .accordion-header {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .accordion-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            color: #1976d2;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: #fff;
+        }
+        
+        .accordion-content-inner {
+            padding: 0 20px 20px;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        /* Дополнительные стили для примера */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .instructions {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Разворачивающиеся текстовые блоки</h1>
+        
+        <div class="instructions">
+            <p>Этот код можно встроить в любую часть вашей страницы. Скопируйте HTML-структуру аккордеона, стили CSS и JavaScript код.</p>
+            <p>Кликните на заголовок, чтобы развернуть или свернуть текстовый блок.</p>
+        </div>
+        
+        <!-- Аккордеон -->
+        <div class="accordion" id="myAccordion">
+            <!-- Элемент 1 -->
+            <div class="accordion-item active">
+                <div class="accordion-header">
+                    <span>Что такое JavaScript?</span>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>JavaScript — это язык программирования, который используется для создания интерактивных веб-страниц. Он позволяет добавлять динамическое поведение, обрабатывать события, управлять DOM и многое другое.</p>
+                        <p>JavaScript является одним из трех основных языков веб-разработки, наряду с HTML и CSS.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Элемент 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Как работает этот аккордеон?</span>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Аккордеон работает на чистом JavaScript. При клике на заголовок:</p>
+                        <ul>
+                            <li>Находится родительский элемент с классом <code>accordion-item</code></li>
+                            <li>Переключается класс <code>active</code> на этом элементе</li>
+                            <li>Изменяется максимальная высота <code>max-height</code> для содержимого</li>
+                            <li>Поворачивается иконка для визуальной индикации</li>
+                        </ul>
+                        <p>При этом можно настроить так, чтобы при открытии одного элемента другие автоматически закрывались, или разрешить одновременное открытие нескольких элементов.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Элемент 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Как встроить этот код на свою страницу?</span>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Чтобы использовать этот аккордеон на своей странице:</p>
+                        <ol>
+                            <li>Скопируйте HTML-структуру аккордеона (элементы с классами <code>accordion</code>, <code>accordion-item</code>, <code>accordion-header</code> и <code>accordion-content</code>)</li>
+                            <li>Добавьте CSS стили в раздел стилей вашей страницы или во внешний CSS файл</li>
+                            <li>Добавьте JavaScript код в конец вашей страницы перед закрывающим тегом <code>&lt;/body&gt;</code> или во внешний JS файл</li>
+                            <li>Измените содержимое блоков под свои нужды</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Элемент 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Дополнительные возможности</span>
+                    <div class="accordion-icon">▼</div>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Вы можете легко настроить этот аккордеон под свои нужды:</p>
+                        <ul>
+                            <li><strong>Анимации:</strong> Измените параметры transition в CSS для другой скорости анимации</li>
+                            <li><strong>Внешний вид:</strong> Измените цвета, отступы, шрифты в CSS-стилях</li>
+                            <li><strong>Поведение:</strong> В JavaScript можно изменить логику работы (открывать только один элемент одновременно или разрешить несколько открытых)</li>
+                            <li><strong>Иконки:</strong> Вместо символа ▼ можно использовать SVG-иконки или шрифтовые иконки</li>
+                        </ul>
+                        <p>Код написан максимально просто и не требует внешних библиотек, поэтому его легко модифицировать.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions" style="margin-top: 30px;">
+            <p><strong>Для использования на вашей странице:</strong> Скопируйте код ниже и вставьте в нужное место вашей HTML-страницы.</p>
+        </div>
+    </div>
+
+    <script>
+        // Ждем, пока весь DOM загрузится
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим все заголовки аккордеона
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            // Перебираем все заголовки и добавляем обработчик клика
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    // Находим родительский элемент (accordion-item)
+                    const accordionItem = this.parentElement;
+                    
+                    // Проверяем, активен ли уже этот элемент
+                    const isActive = accordionItem.classList.contains('active');
+                    
+                    // Закрываем все открытые элементы аккордеона
+                    document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+                        if (activeItem !== accordionItem) {
+                            activeItem.classList.remove('active');
+                            const content = activeItem.querySelector('.accordion-content');
+                            content.style.maxHeight = null;
+                        }
+                    });
+                    
+                    // Если элемент не был активен, открываем его
+                    if (!isActive) {
+                        accordionItem.classList.add('active');
+                        const content = accordionItem.querySelector('.accordion-content');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        // Если элемент был активен, закрываем его
+                        accordionItem.classList.remove('active');
+                        const content = accordionItem.querySelector('.accordion-content');
+                        content.style.maxHeight = null;
+                    }
+                });
+            });
+            
+            // При загрузке страницы открываем первый элемент (если он имеет класс active)
+            document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+                const content = activeItem.querySelector('.accordion-content');
+                if (content) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

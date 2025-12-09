@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вкусные рецепты | Шоколадная фабрика</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="style/main.css">
+    <style>
+        .accordion-content {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border: none;
+        }
+
+        .accordion-content.active {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <h1>Вкусные рецепты</h1>
+        <!-- Аккордеон -->
+        <div class="accordion" id="myAccordion">
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="theme-toggle-placeholder"></div>
+    <div id="scroll-to-top-button-placeholder"></div>
+    <div id="notifications-button-placeholder"></div>
+
+    <script src="./script/initialize-page.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        async function initializeRecipes () {
+            const response = await fetch('data/recipes.json');
+            const json = await response.json();
+    
+            Object.keys(json).forEach(key => {
+                const recipe = json[key];
+
+                const recipeCard = `
+                    <div class="accordion-item">
+                        <div class="accordion-header glass-effect-new">
+                            <span>${recipe.title}</span>
+                            <div class="accordion-icon">▼</div>
+                        </div>
+                        <div class="accordion-content glass-effect-new">
+                            <div class="accordion-content-inner">
+                                <p>${recipe.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('myAccordion').insertAdjacentHTML('beforeend', recipeCard);
+            });
+        }
+
+        await initializeRecipes();
+
+
+        // Находим все заголовки аккордеона
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        // Перебираем все заголовки и добавляем обработчик клика
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                // Находим родительский элемент (accordion-item)
+                const accordionItem = this.parentElement;
+                
+                // Проверяем, активен ли уже этот элемент
+                const isActive = accordionItem.classList.contains('active');
+                
+                // Закрываем все открытые элементы аккордеона
+                document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+                    if (activeItem !== accordionItem) {
+                        activeItem.classList.remove('active');
+                        const content = activeItem.querySelector('.accordion-content');
+                        content.classList.remove('active');
+                        content.style.maxHeight = null;
+                    }
+                });
+                
+                // Если элемент не был активен, открываем его
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                    const content = accordionItem.querySelector('.accordion-content');
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    // Если элемент был активен, закрываем его
+                    accordionItem.classList.remove('active');
+                    const content = accordionItem.querySelector('.accordion-content');
+                    content.classList.remove('active');
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+        
+        // При загрузке страницы открываем первый элемент (если он имеет класс active)
+        document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+            const content = activeItem.querySelector('.accordion-content');
+            if (content) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        });
+    });
+    </script>
+</body>

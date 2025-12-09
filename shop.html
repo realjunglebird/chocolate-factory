@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин | Шоколадная фабрика</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main style="margin-top: 3rem; margin-bottom: 3rem;">
+        <h1>Магазин продукции</h1>
+
+        <div id="products-container">
+        </div>
+    </main>
+
+
+    <div id="basket-panel">
+        <div id="heading">
+            <h1>Корзина</h1>
+            <button id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="basket-items">
+        </div>
+    </div>
+
+
+
+    <div id="footer-placeholder"></div>
+
+    <div id="theme-toggle-placeholder"></div>
+    <div id="scroll-to-top-button-placeholder"></div>
+    <div id="notifications-button-placeholder"></div>
+    <button id="basket-button">
+        <i class="fa-solid fa-basket-shopping"></i>
+    </button>
+
+    <script src="./script/initialize-page.js"></script>
+
+
+
+    <script type="text/javascript">
+    cart = new Map();
+
+    document.addEventListener('DOMContentLoaded', async () => {
+
+        const response = await fetch('data/shop/shop-products.json');
+        const products = await response.json();
+
+        function createProductCard(id, src, name, price) {
+            const element = `
+                <div class=\"product-card\" data-id=\"${id}\">
+                    <button id=\"add\" class=\"add small-round-button\">
+                        <i class=\"fa-solid fa-cart-plus\"></i>
+                    </button>
+                    <img src=\"${src}\" alt=\"\">
+                    <h3>${name}</h3>
+                    <p>${price} ₽</p>
+                </div>
+            `;
+            document.getElementById('products-container').insertAdjacentHTML('beforeend', element);
+        }
+
+        Object.keys(products).forEach(key => {
+            const product = products[key];
+            createProductCard(key, product.thumb, product.name, product.price);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        Object.values(products).forEach(product => {
+            product.count = 1;
+        });
+
+        let cart = {};  // контейнер для визуальных элементов в корзине
+
+        let shelf = document.getElementById('products-container').children;
+
+
+        function addToCart(id) {
+            let product = products[id];
+            let productCard = document.createElement('div');
+            product.count = 1;
+            productCard.className = "basket-item";
+            productCard.setAttribute('data-id', id);
+
+            productCard.innerHTML =
+                `
+                        <img src=${product.thumb}>
+                        <div class="controls">
+                            <button class="delete small-round-button">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                            <div class="count">
+                                <button class="minus small-round-button">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <input class="product-count" type="number" value="${product.count}" min="0" max="1000"/>
+                                <button class="plus small-round-button">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="name">
+                                <h3>${product.name}</h3>
+                            </div>
+                        </div>
+                        `;
+            document.getElementById('basket-items').appendChild(productCard);
+
+            cart[id] = productCard;
+            setButtons(productCard);
+            console.log(cart);
+        }
+
+        function updateVisualCount(id) {
+            let product = products[id];
+            let productDiv = cart[id];
+
+            productDiv.querySelector('.product-count').value = product.count;
+        }
+
+        function updateCart() {
+            Object.keys(products).forEach(key => {
+                addToCart(key);
+            });
+        }
+
+        const basketPanel = document.getElementById('basket-panel');
+
+        document.querySelectorAll('.product-card').forEach(product => {
+            product.querySelector('#add').addEventListener('click', (e) => {
+                let id = product.getAttribute('data-id');
+                if (cart[id] === undefined) {
+                    addToCart(id);
+                } else {
+                    products[id].count++;
+                    updateVisualCount(id);
+                }
+            });
+        });
+
+        document.getElementById('basket-button').addEventListener('click', (e) => {
+            basketPanel.style.display = 'block';
+        });
+
+        document.getElementById('close').addEventListener('click', (e) => {
+            basketPanel.style.display = 'none';
+        });
+
+
+        function setButtons(target) {
+            target.querySelectorAll('.plus').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    let id = button.parentElement.parentElement.parentElement.getAttribute('data-id');
+                    if (products[id].count === 1000) return;
+                    products[id].count++;
+                    updateVisualCount(id);
+                });
+            });
+
+            target.querySelectorAll('.minus').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    let id = button.parentElement.parentElement.parentElement.getAttribute('data-id');
+                    if (products[id].count === 0) return;
+                    products[id].count--;
+                    updateVisualCount(id);
+                });
+            });
+
+            target.querySelectorAll('.product-count').forEach(field => {
+                field.addEventListener('change', (e) => {
+                    let id = field.parentElement.parentElement.parentElement.getAttribute('data-id');
+                    products[id].count = field.value;
+                });
+            });
+
+            target.querySelectorAll('.delete').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    let id = button.parentElement.parentElement.getAttribute('data-id');
+                    products[id].count = 0;
+                    cart[id].remove();
+                    delete cart[id];
+                    console.log(cart);
+                    console.log(id);
+                });
+            });
+        }
+    });
+
+    </script>
+
+</body>
+</html>
