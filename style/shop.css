@@ -1,3 +1,10 @@
+#basket-button {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    z-index: 99;
+}
+
 #basket-panel {
   display: none;
   width: 30rem;
@@ -206,5 +213,3 @@
   top: 1rem;
   right: 1rem;
 }
-
-/*# sourceMappingURL=shop.css.map */
